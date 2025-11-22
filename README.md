@@ -19,7 +19,7 @@ This project moves beyond simple code translation by employing a team of special
 ## 3. Technology Stack
 
 -   **Backend:** Python 3.10+
--   **AI Engine:** Google Gemini 1.5 Pro
+-   **AI Engine:** Google Gemini 2.5 Pro
 -   **Core AI Framework:** `google-generativeai`
 -   **Code Parsing:** `javalang`
 -   **Modernized Output Stack:** FastAPI, Pydantic, Uvicorn, Pytest
