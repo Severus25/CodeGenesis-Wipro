@@ -19,8 +19,8 @@ This project moves beyond simple code translation by employing a team of special
 ## 3. Technology Stack
 
 -   **Backend:** Python 3.10+
--   **AI Engine:** Google Gemini 2.5 Pro
--   **Core AI Framework:** `google-generativeai`
+-   **AI Engine:** **Azure OpenAI (GPT-4o)**
+-   **Core AI Framework:** **`openai`**
 -   **Code Parsing:** `javalang`
 -   **Modernized Output Stack:** FastAPI, Pydantic, Uvicorn, Pytest
 -   **Containerization:** Docker
@@ -30,7 +30,7 @@ This project moves beyond simple code translation by employing a team of special
 **Prerequisites:**
 -   Python 3.10+
 -   Docker (Optional, see Docker section)
--   A Google AI API Key
+-   **An Azure OpenAI API Key, Endpoint, and Deployment Name**
 
 **Installation:**
 
@@ -47,15 +47,19 @@ This project moves beyond simple code translation by employing a team of special
     ```
 
 3.  **Install dependencies:**
+    (Ensure `openai` is listed in your `requirements.txt` file)
     ```bash
     pip install -r requirements.txt
     ```
 
 4.  **Set up environment variables:**
     -   Create a file named `.env` in the root directory.
-    -   Add your API key to this file:
+    -   Add your Azure OpenAI credentials to this file. It must have this exact structure:
         ```
-        GOOGLE_API_KEY="your_google_api_key_here"
+        AZURE_OPENAI_API_KEY="YOUR_SECRET_API_KEY_HERE"
+        AZURE_OPENAI_ENDPOINT="https://YOUR_INSTANCE_NAME.openai.azure.com/"
+        AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4o"
+        AZURE_OPENAI_API_VERSION="2023-05-15"
         ```
 
 ## 5. How to Run the Modernization Pipeline
@@ -83,7 +87,7 @@ After the pipeline has successfully run, you can launch the newly created web se
     ```bash
     uvicorn legacy_user:app --reload
     ```
-4.  **Access the interactive documentation:** Open your browser and go to **`http://127.0.0.1:8000/docs`**.
+4.  **Access the interactive documentation:** Open your browser and go to **`http://127.0.01:8000/docs`**.
 
 ## 7. How to Use Docker
 
@@ -102,4 +106,4 @@ This project includes a `Dockerfile` to build a self-contained image of the Code
     ```
     - `--rm`: Deletes the container after it finishes.
     - `-v`: Mounts your local output/input directories into the container so it can read the legacy code and save the new code to your machine.
-    - `--env-file .env`: Securely passes your API key to the container.
+    - `--env-file .env`: Securely passes your Azure API credentials from the `.env` file to the container.
