@@ -1,8 +1,3 @@
-# Core library for interacting with Google's Generative AI models
-google-generativeai
-
-# For loading environment variables from a .env file (to keep API keys secure)
+openai
 python-dotenv
-
-# A robust library for parsing Java source code into an Abstract Syntax Tree (AST)
 javalang
